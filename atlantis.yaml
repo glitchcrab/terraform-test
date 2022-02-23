@@ -6,8 +6,9 @@ workflows:
       - run: rm -rf .terraform
       - init:
           extra_args: [-backend-config=/minio-backend-config/backend-config]
+      - plan
 projects:
-- name: INSTANCE-NAME
+- name: terraform-test
   dir: terraform
   workflow: custom
 

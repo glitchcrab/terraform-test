@@ -1,11 +1,11 @@
 pm_host_port    = 8006
 pm_tls_insecure = true
 
-instance_domain = "" # CHANGEME
+instance_domain = "node.room101.a7d"
 
 clone         = "template-ubuntu-2004-base-image"
-target_node   = "" # CHANGEME
-resource_pool = "" # CHANGEME
+target_node   = "host-03"
+resource_pool = "infrastructure"
 
 os_type                 = "cloud-init"
 cloudinit_cdrom_storage = "nfs-cloudinit"
@@ -25,4 +25,4 @@ net0_network_cidr    = "172.25.0.0/23"
 net0_network_netmask = 23
 
 searchdomain = "analbeard.com"
-nameserver   = "1.1.1.1"
+nameserver   = "10.101.0.45"
