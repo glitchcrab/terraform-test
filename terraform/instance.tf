@@ -83,7 +83,7 @@ module "instance" {
   disks = [{
     type    = "scsi"
     storage = "local-lvm"
-    size    = "15G" # CHANGEME
+    size    = "10G"
   }]
 
   snippet_dir             = local.snippet_dir
