@@ -1,5 +1,6 @@
-pm_host_port    = 8006
-pm_tls_insecure = true
+pm_host_port        = 8006
+pm_tls_insecure     = true
+pm_host_pub_ssh_key = "AAAAC3NzaC1lZDI1NTE5AAAAIFHpx6FshVf6/zt3tLLC+D71mBJiiMx4vwrxN7fXHCDn"
 
 instance_domain = "node.room101.a7d"
 
