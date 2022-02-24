@@ -28,10 +28,9 @@ resource "consul_service" "consul_service_ssh" {
 module "instance_cloudinit_template" {
   source = "github.com/glitchcrab/terraform-module-proxmox-cloudinit-template"
 
-  conn_type     = var.connection_type
-  conn_user     = data.vault_generic_secret.terraform_pve_ssh.data["user"]
-  conn_target   = local.pm_host_address
-  conn_host_key = var.pm_host_pub_ssh_key
+  conn_type   = var.connection_type
+  conn_user   = data.vault_generic_secret.terraform_pve_ssh.data["user"]
+  conn_target = local.pm_host_address
 
   instance_name = "${local.instance_name}.${var.instance_domain}"
 

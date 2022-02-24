@@ -24,11 +24,6 @@ variable "pm_tls_insecure" {
   description = "Set to `true` if the Proxmox API is secured with a self-signed TLS certificate."
 }
 
-variable "pm_host_pub_ssh_key" {
-  type        = string
-  description = "SSH public key for the file provisioner target."
-}
-
 # network configuration
 
 variable "net0_network_bridge" {
