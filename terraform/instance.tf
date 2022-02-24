@@ -48,9 +48,9 @@ module "instance_cloudinit_template" {
   search_domains = ["k8s.analbeard.com", "analbeard.com"]
   dns_servers    = ["10.101.0.60", "10.101.0.45"]
 
-  user_data_blob = {
-    hostname : "${local.instance_name}.${var.instance_domain}"
-  }
+  user_data_blob = yamlencode({
+    "hostname" : "${local.instance_name}.${var.instance_domain}"
+  })
 }
 
 module "instance" {
