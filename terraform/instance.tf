@@ -28,9 +28,10 @@ resource "consul_service" "consul_service_ssh" {
 module "instance_cloudinit_template" {
   source = "github.com/glitchcrab/terraform-module-proxmox-cloudinit-template"
 
-  conn_type   = var.connection_type
-  conn_user   = data.vault_generic_secret.terraform_pve_ssh.data["user"]
-  conn_target = local.pm_host_address
+  conn_type    = var.connection_type
+  conn_user    = data.vault_generic_secret.terraform_pve_ssh.data["user"]
+  conn_ssh_key = data.vault_generic_secret.terraform_ssh_key.data["base64"]
+  conn_target  = local.pm_host_address
 
   instance_name = "${local.instance_name}.${var.instance_domain}"
 
@@ -48,9 +49,9 @@ module "instance_cloudinit_template" {
   search_domains = ["k8s.analbeard.com", "analbeard.com"]
   dns_servers    = ["10.101.0.60", "10.101.0.45"]
 
-  user_data_blob = {
-    hostname : "${local.instance_name}.${var.instance_domain}"
-  }
+  user_data_blob = yamlencode({
+    "hostname" : "${local.instance_name}.${var.instance_domain}"
+  })
 }
 
 module "instance" {
@@ -83,7 +84,7 @@ module "instance" {
   disks = [{
     type    = "scsi"
     storage = "local-lvm"
-    size    = "10G"
+    size    = "15G"
   }]
 
   snippet_dir             = local.snippet_dir
